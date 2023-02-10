@@ -1,8 +1,8 @@
-# Task2.-K8S
+## Task2.-K8S
 
 Using K8S cluster that was created at the previous [Home Task](https://github.com/Heckfy05/Task1.-K8S) running on GCP.
 1. Get information about your worker node and save it in some file
-   >kubectl describe nodes kubenode > NodeInfo.txt
+   `kubectl describe nodes kubenode > NodeInfo.txt`
 
 [File](https://github.com/Heckfy05/Task2.-K8S/blob/main/NodeInfo.txt) with the information about node.
 
@@ -15,15 +15,30 @@ As resoults of deploying:
 Status of the deployment, pods and services:
 ![status](img/GetInfo.png)
 
-[Description](NodeDescription.txt) of the Node
->kubectl describe nodes kubenode -n homework2 > NodeDescribe.txt
-
 [Description](DescribePods.txt) of the Pod's
->kubectl describe pods -n homework2 > DescribePods.txt
+`kubectl describe pods -n homework2 > DescribePods.txt`
 
 [Description](DescribeServices.txt) of the Services
->kubectl describe service -n homework2 > DescribeServices.txt
+`kubectl describe service -n homework2 > DescribeServices.txt`
 
 Logs from Pods:
 ![LogsPods](img/PodsLogs.png)
 
+4. Preparing two job yaml files for:
+   4.1 Getting content via curl from an internal port (ClusterIP) - [JobCurlClusterIp.yaml](JobCurlClusterIp.yaml)
+   Applaying Job by:
+   `kubectl apply -f JobCurlClusterIp.yaml`
+   Getting logs by comannd:
+   `kubectl logs job.batch/curlclusterip -n homework2`
+![ClusterIP](img/ClusterIP.png)
+   4.2 Getting content via curl from an external port (NodePort) - [JobCurlNodePort.yaml](JobCurlNodePort.yaml)
+   Applying Job by:
+   `kubectl apply -f JobCurlNodePort.yaml`
+   Geting logs by:
+   `kubectl logs job.batch/nodeport -n homework2`
+   ![NodePort](img/NodePort.png)
+5. Creating [Cronjob.yaml](Cronjob.yaml) file which tests the connection to Nginx service every 3 minutes.
+   Applying the CronJob.yaml by:
+   `kubectl apply -f Cronjob.yaml`
+   As the resoult:
+   ![CronJob](img/CronJob.png)
