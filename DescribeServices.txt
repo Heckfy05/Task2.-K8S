@@ -1,0 +1,34 @@
+Name:              nginx-clusterip
+Namespace:         homework2
+Labels:            <none>
+Annotations:       <none>
+Selector:          app.kubernetes.io/name=nginx
+Type:              ClusterIP
+IP Family Policy:  SingleStack
+IP Families:       IPv4
+IP:                10.104.127.140
+IPs:               10.104.127.140
+Port:              tcp  80/TCP
+TargetPort:        80/TCP
+Endpoints:         <none>
+Session Affinity:  None
+Events:            <none>
+
+
+Name:                     nginx-nodeport
+Namespace:                homework2
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app.kubernetes.io/name=nginx
+Type:                     NodePort
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.97.207.185
+IPs:                      10.97.207.185
+Port:                     <unset>  80/TCP
+TargetPort:               80/TCP
+NodePort:                 <unset>  30007/TCP
+Endpoints:                <none>
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
